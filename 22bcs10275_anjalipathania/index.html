@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ease of Living Index Calculator</title>
+</head>
+<body>
+    <header>
+        <h1>Ease of Living Index Calculator</h1>
+    </header>
+    <div class="container">
+        <div class="form-group">
+            <label for="transport">Transportation Efficiency (0-10):</label>
+            <input type="number" id="transport" min="0" max="10">
+        </div>
+
+        <div class="form-group">
+            <label for="airQuality">Air Quality (0-10):</label>
+            <input type="number" id="airQuality" min="0" max="10">
+        </div>
+
+        <div class="form-group">
+            <label for="safety">Safety (0-10):</label>
+            <input type="number" id="safety" min="0" max="10">
+        </div>
+
+        <div class="form-group">
+            <label for="education">Education Facilities (0-10):</label>
+            <input type="number" id="education" min="0" max="10">
+        </div>
+
+        <div class="form-group">
+            <label for="healthcare">Healthcare Access (0-10):</label>
+            <input type="number" id="healthcare" min="0" max="10">
+        </div>
+
+        <div class="form-group">
+            <label for="housing">Housing Affordability (0-10):</label>
+            <input type="number" id="housing" min="0" max="10">
+        </div>
+
+        <button onclick="calculateIndex()">Calculate</button>
+
+        <div id="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        function calculateIndex() {
+            const transport = parseFloat(document.getElementById('transport').value) || 0;
+            const airQuality = parseFloat(document.getElementById('airQuality').value) || 0;
+            const safety = parseFloat(document.getElementById('safety').value) || 0;
+            const education = parseFloat(document.getElementById('education').value) || 0;
+            const healthcare = parseFloat(document.getElementById('healthcare').value) || 0;
+            const housing = parseFloat(document.getElementById('housing').value) || 0;
+
+            const total = transport + airQuality + safety + education + healthcare + housing;
+            const average = (total / 60) * 100;
+
+            const result = document.getElementById('result');
+            result.style.display = 'block';
+            result.textContent = `Ease of Living Index: ${average.toFixed(2)}%`;
+        }
+    </script>
+</body>
+</html>
